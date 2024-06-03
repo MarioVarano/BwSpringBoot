@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Indirizzi extends Base{
+public class Indirizzo extends Base{
 
     private String via;
     private Integer civico;
