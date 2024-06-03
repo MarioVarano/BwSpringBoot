@@ -1,9 +1,6 @@
 package it.epicode.Bwspring.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -21,7 +18,7 @@ public class Fatture extends Base{
     private LocalDate data;
     private Double importo;
     private Long numero;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name="statoFattura_id")
     private StatoFattura stato;
 }

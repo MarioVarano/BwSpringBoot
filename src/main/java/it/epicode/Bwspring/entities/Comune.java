@@ -6,20 +6,22 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "Indirizzi")
+@Table(name = "comuni")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Indirizzi extends Base{
-
-    private String via;
-    private Integer civico;
-    private String localita;
-    private Long cap;
+public class Comune extends Base{
+    private String codice;
+    private String nome;
     @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinColumn(name = "comune_id")
-    private Comune comune;
+    private Provincia provincia;
 
+    public Comune(String codice, String nome) {
+        this.codice = codice;
+        this.nome = nome;
+
+    }
 }

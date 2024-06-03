@@ -1,0 +1,13 @@
+package it.epicode.Bwspring.repositories;
+
+import it.epicode.Bwspring.entities.Indirizzi;
+import it.epicode.Bwspring.entities.Provincia;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProvinceRepository extends JpaRepository<Provincia, Long>, PagingAndSortingRepository<Provincia, Long> {
+
+    Provincia findByProvincia(String provincia);
+}
