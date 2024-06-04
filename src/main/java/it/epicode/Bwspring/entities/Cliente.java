@@ -29,7 +29,7 @@ public class Cliente extends Base{
     private Long telefono;
     private String emailContatto;
     private String nomeContatto;
-    private String cognomeContato;
+    private String cognomeContatto;
     private Long telefonoContatto;
     @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name="indirizzo_legale_id")
@@ -41,7 +41,7 @@ public class Cliente extends Base{
     @JoinColumn(name="fatture_id")
     private List<Fatture> fatture;
 //costruttore ne caso cliente abbia solo un indirizzo che li assegna uguali nel caso
-    public Cliente(Long ragioneSociale, Long partivaIva, String email, LocalDate dataUltimoContatto, Double fatturatoAnnuale, String pec, Long telefono, String emailContatto, String nomeContatto, String cognomeContato, Long telefonoContatto,  Indirizzi indirizzoOperativa, List<Fatture> fatture) {
+    public Cliente(Long ragioneSociale, Long partivaIva, String email, LocalDate dataUltimoContatto, Double fatturatoAnnuale, String pec, Long telefono, String emailContatto, String nomeContatto, String cognomeContatto, Long telefonoContatto,  Indirizzi indirizzoOperativa, List<Fatture> fatture) {
         this.ragioneSociale = ragioneSociale;
         this.partivaIva = partivaIva;
         this.email = email;
@@ -51,7 +51,7 @@ public class Cliente extends Base{
         this.telefono = telefono;
         this.emailContatto = emailContatto;
         this.nomeContatto = nomeContatto;
-        this.cognomeContato = cognomeContato;
+        this.cognomeContatto = cognomeContatto;
         this.telefonoContatto = telefonoContatto;
         this.indirizzoLegale = indirizzoOperativa;
         this.indirizzoOperativa = indirizzoOperativa;

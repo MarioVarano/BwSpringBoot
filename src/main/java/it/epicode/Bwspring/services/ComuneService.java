@@ -30,7 +30,7 @@ public class ComuneService {
     @Autowired
     ComuneRepository comuneRepository;
 
-    static final Path file = Path.of("C:/Users/alexx/Desktop/Bwspring/Bwspring/src/main/resources/data/province-italiane.csv");
+    static final Path file = Path.of("C:/Users/alexx/Desktop/Bwspring/Bwspring/src/main/resources/data/comuni-italiani.csv");
 
     public List<Comune> save(Path file) throws IOException {
         List<Comune> comuni;
@@ -42,7 +42,7 @@ public class ComuneService {
                     .map(line -> line.split(";"))
                     .map(line -> new Comune(line[0], line[2],provinceRepository.findByProvincia(line[3])))
                     .toList();
-            
+
             comuneRepository.saveAll(comuni);
             log.info("Salvate");
         } catch (IOException e) {
