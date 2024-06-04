@@ -1,5 +1,6 @@
 package it.epicode.Bwspring.entities;
 
+import it.epicode.Bwspring.repositories.ComuneRepository;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,4 +23,12 @@ public class Indirizzi extends Base{
     @JoinColumn(name = "comune_id")
     private Comune comune;
 
+
+    public void cercaComune(ComuneRepository comuneRepository) {
+        if (this.getComune() == null && this.getLocalita() != null && this.getCap() != null) {
+            this.setComune(comuneRepository.findByNome(this.localita));
+        }
+    }
 }
+
+

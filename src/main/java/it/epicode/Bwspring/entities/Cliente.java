@@ -3,10 +3,7 @@ package it.epicode.Bwspring.entities;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,13 +12,14 @@ import java.util.List;
 @Entity
 @Table(name = "clienti")
 @Data
+@Builder(setterPrefix = "with")
 @AllArgsConstructor
 @NoArgsConstructor
 
 public class Cliente extends Base{
 
     private Long ragioneSociale;
-    private Long partivaIva;
+    private Long partitaIva;
     private String email;
     private LocalDate dataUltimoContatto;
     private Double fatturatoAnnuale;
@@ -37,13 +35,12 @@ public class Cliente extends Base{
     @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name="indirizzo_operativa_id")
     private Indirizzi indirizzoOperativa;
-    @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    //@JoinColumn(name="fatture_id")
-    private List<Fatture> fatture;
+
+
 //costruttore ne caso cliente abbia solo un indirizzo che li assegna uguali nel caso
-    public Cliente(Long ragioneSociale, Long partivaIva, String email, LocalDate dataUltimoContatto, Double fatturatoAnnuale, String pec, Long telefono, String emailContatto, String nomeContatto, String cognomeContatto, Long telefonoContatto,  Indirizzi indirizzoOperativa, List<Fatture> fatture) {
+    public Cliente(Long ragioneSociale, Long partitaIva, String email, LocalDate dataUltimoContatto, Double fatturatoAnnuale, String pec, Long telefono, String emailContatto, String nomeContatto, String cognomeContatto, Long telefonoContatto,  Indirizzi indirizzoOperativa) {
         this.ragioneSociale = ragioneSociale;
-        this.partivaIva = partivaIva;
+        this.partitaIva = partitaIva;
         this.email = email;
         this.dataUltimoContatto = dataUltimoContatto;
         this.fatturatoAnnuale = fatturatoAnnuale;
@@ -55,7 +52,7 @@ public class Cliente extends Base{
         this.telefonoContatto = telefonoContatto;
         this.indirizzoLegale = indirizzoOperativa;
         this.indirizzoOperativa = indirizzoOperativa;
-        this.fatture = fatture;
+
     }
 //    private ? logoAziendale;
 }

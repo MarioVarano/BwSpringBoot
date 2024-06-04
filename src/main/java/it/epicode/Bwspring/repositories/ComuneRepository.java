@@ -8,4 +8,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ComuneRepository extends JpaRepository<Comune, Long>, PagingAndSortingRepository<Comune, Long> {
+
+    Comune findByNome(String nome);
+
 }

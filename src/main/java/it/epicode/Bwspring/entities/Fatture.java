@@ -19,4 +19,7 @@ public class Fatture extends Base{
     @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name="statoFattura_id")
     private StatoFattura stato;
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name="cliente_id")
+    private Cliente cliente;
 }
