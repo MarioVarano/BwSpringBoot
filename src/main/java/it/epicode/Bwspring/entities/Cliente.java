@@ -38,7 +38,7 @@ public class Cliente extends Base{
     @JoinColumn(name="indirizzo_operativa_id")
     private Indirizzi indirizzoOperativa;
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinColumn(name="fatture_id")
+    //@JoinColumn(name="fatture_id")
     private List<Fatture> fatture;
 //costruttore ne caso cliente abbia solo un indirizzo che li assegna uguali nel caso
     public Cliente(Long ragioneSociale, Long partivaIva, String email, LocalDate dataUltimoContatto, Double fatturatoAnnuale, String pec, Long telefono, String emailContatto, String nomeContatto, String cognomeContatto, Long telefonoContatto,  Indirizzi indirizzoOperativa, List<Fatture> fatture) {

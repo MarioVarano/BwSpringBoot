@@ -7,16 +7,12 @@ import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public record FattureRequest(
-@NotBlank(message = "La data deve esserci")
+@NotNull(message = "La data deve esserci")
 LocalDate data,
-@NotBlank(message = "Importo necessario")
-Double importo,
+@NotNull(message = "Importo necessario")
+double importo,
 @NotNull(message = "Numero fattura necessario")
 Long numero,
-@NotBlank(message = "Codice cliente necessario")
-Long codiceCliente,
-@NotBlank(message = "Codice fornitore necessario")
-Long codiceFornitore,
-@NotBlank(message = "Stato fattura obbligatorio")
+@NotNull(message = "Stato fattura obbligatorio")
 StatoFattura stato) {
 }

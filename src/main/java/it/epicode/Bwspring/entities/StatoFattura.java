@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="ruoli")
+@Table(name="stato_fatture")
 @EqualsAndHashCode(callSuper = true)
 public class StatoFattura extends Base{
     private String stato;
