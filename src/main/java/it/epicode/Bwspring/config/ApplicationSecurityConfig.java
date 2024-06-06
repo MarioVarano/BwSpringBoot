@@ -48,7 +48,14 @@ public class ApplicationSecurityConfig {
 						// abilita l'accesso anonimo all'api di login
 						.requestMatchers("/utenti/login").permitAll() //
 						// solo per consentire la registrazione di un utente
-						.requestMatchers(HttpMethod.POST, "/utenti").permitAll()
+						.requestMatchers(HttpMethod.POST, "/utenti","/province/load","/comuni/load").permitAll()
+
+						.requestMatchers(HttpMethod.POST, "/**").hasAuthority("ADMIN")
+						.requestMatchers(HttpMethod.PUT, "/**").hasAuthority("ADMIN")
+						.requestMatchers(HttpMethod.DELETE, "/**").hasAuthority("ADMIN")
+
+						// permette l'accesso a tutte le richieste GET agli utenti autenticati
+						.requestMatchers(HttpMethod.GET, "/**").authenticated()
 
 						// tutte le altre richieste sono accessibili ad utenti autenticati
 						.requestMatchers("/**").authenticated() //

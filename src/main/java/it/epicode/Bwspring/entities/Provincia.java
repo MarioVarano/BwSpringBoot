@@ -21,12 +21,8 @@ public class Provincia extends Base{
 
     private String provincia;
     private String regione;
-    @OneToMany(mappedBy = "provincia")
-    private List<Comune> comuni;
+    //@OneToMany(mappedBy = "provincia")
+    //private List<Comune> comuni;
 
-    public Provincia(String sigla, String provincia, String regione) {
-        this.sigla = sigla;
-        this.provincia = provincia;
-        this.regione = regione;
-    }
+
 }

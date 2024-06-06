@@ -19,7 +19,7 @@ public class Utenti extends Base{
     private String nome;
     private String cognome;
     @OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinColumn(name = "ruolo_id")
+    @JoinColumn(name = "utente_id")
     private List<Ruoli> ruoli;
 
     //trovate modo per upload immagine pd

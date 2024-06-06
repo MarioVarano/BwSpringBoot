@@ -1,6 +1,5 @@
 package it.epicode.Bwspring.controllers.records;
 
-import it.epicode.Bwspring.entities.Cliente;
 import it.epicode.Bwspring.entities.StatoFattura;
 import jakarta.validation.constraints.NotNull;
 
@@ -14,7 +13,5 @@ double importo,
 @NotNull(message = "Numero fattura necessario")
 Long numero,
 @NotNull(message = "Stato fattura obbligatorio")
-StatoFattura stato,
-@NotNull(message = "Cliente necessario per emettere fattura")
-Cliente cliente) {
+StatoFattura stato) {
 }

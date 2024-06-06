@@ -1,6 +1,7 @@
 package it.epicode.Bwspring.repositories;
 
 import it.epicode.Bwspring.entities.Cliente;
+import it.epicode.Bwspring.entities.Ruoli;
 import it.epicode.Bwspring.entities.Utenti;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -13,4 +14,7 @@ public interface UtentiRepository extends JpaRepository<Utenti, Long>, PagingAnd
 
     Optional<Utenti> findOneByUsernameAndPassword(String username, String password);
     Optional<Utenti> findOneByUsername(String username);
+
+
+    Optional<Utenti> findOneByRuoli(Ruoli ruolo);
 }

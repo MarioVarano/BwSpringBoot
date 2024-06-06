@@ -6,6 +6,7 @@ import it.epicode.Bwspring.repositories.ClientiRepository;
 import it.epicode.Bwspring.repositories.ComuneRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,6 +18,7 @@ public class ClientiService {
 
     @Autowired
     ClientiRepository clientiRep;
+
 
     public Cliente crea(Cliente c){
         c.getIndirizzoLegale().cercaComune(comuneRepository);
