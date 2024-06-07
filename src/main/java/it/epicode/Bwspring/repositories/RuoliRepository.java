@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface RuoliRepository extends JpaRepository<Ruoli, Long>, PagingAndSortingRepository<Ruoli, Long> {
 
     Optional<Ruoli> findOneByNome(String roleName);
+    Optional<Ruoli> findByNome(String nome);
 }

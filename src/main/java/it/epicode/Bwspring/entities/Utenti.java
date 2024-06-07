@@ -26,4 +26,16 @@ public class Utenti extends Base{
     private String avatar;
 
 
+    public Utenti(String username, String email, String nome, String cognome, List<Ruoli> ruoli, String avatar) {
+        this.username = username;
+        this.email = email;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.ruoli = ruoli;
+        this.avatar = avatar;
+    }
+
+    public void addRuolo(Ruoli ruolo) {
+        this.ruoli.add(ruolo);
+    }
 }

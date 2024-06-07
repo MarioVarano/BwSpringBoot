@@ -3,9 +3,12 @@ package it.epicode.Bwspring.controllers;
 import it.epicode.Bwspring.controllers.exceptions.FieldValidationException;
 import it.epicode.Bwspring.controllers.models.LoginModel;
 import it.epicode.Bwspring.controllers.models.RegisterUserModel;
+import it.epicode.Bwspring.entities.Utenti;
 import it.epicode.Bwspring.services.UtentiService;
 import it.epicode.Bwspring.services.dto.RegisterUserDto;
 import it.epicode.Bwspring.services.dto.RegisteredUserDto;
+import jakarta.persistence.EntityNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -17,7 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 
 import java.util.Optional;
-
+@Slf4j
 @RestController
 @RequestMapping("/utenti")
 public class UtentiController {
@@ -67,5 +70,20 @@ public class UtentiController {
     @ResponseStatus(code = HttpStatus.OK)
     public Optional<RegisteredUserDto> get(@PathVariable long id) {
         return utentiService.get(id);
+    }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(code = HttpStatus.OK)
+    public ResponseEntity<Object> update(@PathVariable long id, @RequestBody Utenti ut) {
+        try{
+            Utenti utentiaggiornati = utentiService.update(id, ut);
+            return ResponseEntity.ok(utentiaggiornati);
+
+        }catch (EntityNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        } catch (Exception e) {
+//            log.error("Errore durante l'aggiornamento della fattura con ID " + id, e);
+            return ResponseEntity.internalServerError().build();
+        }
     }
 }

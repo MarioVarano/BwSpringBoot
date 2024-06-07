@@ -2,6 +2,7 @@ package it.epicode.Bwspring.entities;
 
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.*;
 
@@ -14,4 +15,5 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = true)
 public class Ruoli extends Base{
     private String nome;
+
 }
