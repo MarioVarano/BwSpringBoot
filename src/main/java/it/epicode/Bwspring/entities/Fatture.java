@@ -1,13 +1,7 @@
 package it.epicode.Bwspring.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -15,13 +9,17 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "fatture")
 @Data
+@Builder(setterPrefix = "with")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Fatture extends Base{
     private LocalDate data;
-    private Double importo;
+    private double importo;
     private Long numero;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinColumn(name="statoFattura_id")
     private StatoFattura stato;
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name="cliente_id")
+    private Cliente cliente;
 }

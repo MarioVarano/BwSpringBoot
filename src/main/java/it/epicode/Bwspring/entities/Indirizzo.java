@@ -1,7 +1,7 @@
 package it.epicode.Bwspring.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import it.epicode.Bwspring.repositories.ComuneRepository;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,6 +19,16 @@ public class Indirizzo extends Base{
     private Integer civico;
     private String localita;
     private Long cap;
-    private String comune;
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JoinColumn(name = "comune_id")
+    private Comune comune;
 
+
+    public void cercaComune(ComuneRepository comuneRepository) {
+        if (this.getComune() == null && this.getLocalita() != null && this.getCap() != null) {
+            this.setComune(comuneRepository.findByNome(this.localita));
+        }
+    }
 }
+
+
